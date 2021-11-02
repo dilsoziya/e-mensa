@@ -1,0 +1,84 @@
+<!--
+    - Praktikum DBWT. Autoren:
+    - Baris, Kacar, 3280180
+    -
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid</title>
+  <style>
+        .grid0{
+            display: grid;
+            border: 5px solid black;
+            grid-template-columns: 100px 100px 100px;
+            height: 100px;
+            justify-content: space-between;
+        }
+        .grid1{
+            border: 10px solid red;
+        }
+        .grid2{
+            border: 10px solid yellow;
+        }
+        .grid3{
+            border: 10px solid green;
+        }
+
+        .grid4{
+            display:grid;
+            grid-template-rows: auto auto auto;
+            border: 5px solid black;
+            grid-gap: 2px;
+            justify-content: center;
+        }
+        .grid5{
+            border: 10px solid black;
+            width: 100px;
+        }
+        .grid6{
+
+            border: 10px solid red;
+        }
+        .grid7{
+            border: 10px solid yellow;
+        }
+
+        .grid8{
+            display:grid;
+            grid-template-rows: auto ;
+            border: 5px solid black;
+            border-spacing: 5px;
+            grid-gap: 2px;
+            justify-content: center;
+            align-content: center;
+            height: 200px;
+        }
+
+        .grid9{
+            border: 50px solid green;
+
+        }
+
+  </style>
+</head>
+<body>
+    <div class="grid0">
+        <div class="grid1"></div>
+        <div class="grid2"></div>
+        <div class="grid3"></div>
+    </div>
+    <br>
+    <div class="grid4">
+        <div class="grid5"></div>
+        <div class="grid6"></div>
+        <div class="grid7"></div>
+    </div>
+
+    <div class="grid8">
+        <div class="grid9"></div>
+    </div>
+
+</body>
+</html>

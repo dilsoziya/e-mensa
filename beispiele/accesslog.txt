@@ -1,0 +1,12 @@
+Uhrzeit: 13:57
+Datum: 02.11.2021
+Webbrowser: Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+IP-Adresse: 127.0.0.1
+
+
+Uhrzeit: 13:59
+Datum: 02.11.2021
+Webbrowser: Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+IP-Adresse: 127.0.0.1
+
+

@@ -1,0 +1,106 @@
+@media  (min-width: 853px){
+    .navigation li {
+        float: left;
+        display: inline-block;
+        list-style: none;
+        padding: 2em 2em ;
+    }
+    .navigation #elem1{
+        padding-left: 2em;
+    }
+    .bars{
+        display: none;
+    }
+    #check{
+        display: none;
+    }
+    .navigation a{
+        color:black;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    #logo{
+        float: left;
+        margin-left: 3em;
+    }
+}
+.navi{
+    position: fixed;
+   /**position: absolute;*/
+    width: 100%;
+    background-color: #f0922e;
+}
+
+#logo:hover {
+    transform: rotate(360deg);
+    transition: 1000ms;
+}
+#logo img{
+    position: relative;
+    height:90px;
+}
+#check{
+    display: none;
+}
+@media (max-width: 852px) {
+    #logo{
+        position: absolute;
+
+    }
+    .navigation a{
+        color:white;
+        text-decoration: none;
+    }
+    .bars {
+        float: right;
+        color: black;
+        font-size: 30px;
+        margin-top: 34px;
+        margin-right: 20px;
+        height: 50px;
+        cursor: pointer;
+        transition: transform 1s;
+    }
+    .navigation {
+        width: 100%;
+        padding-left: 0px;
+        position: absolute;
+        margin-top: 84px;
+        line-height: 40px;
+        text-align: center;
+        left: -120%;
+        transition: all .5s;
+        list-style: none;
+        background-color: #f0922e;
+
+    }
+    .navigation li{
+        border: 1px solid white;
+        border-left: none;
+        border-bottom: none;
+        border-right: none;
+        border-radius: 10px;
+        margin-top: 0px;
+
+    }
+    .navigation a{
+        text-decoration: none;
+    }
+     .navigation li:hover{
+        cursor: pointer;
+        background-color: #B91717FF;
+        font-size: 25px;
+        border-radius: 0px;
+        border-top:none;
+        border-bottom: none;
+        font-weight: bolder;
+        border-left: 10px solid #f0922e;
+         border-right: 10px solid #f0922e;
+        transition: 1000ms;
+     }
+
+    #check:checked ~ .navigation  a, #check:checked ~ .navigation {
+        left: 0%;
+
+    }
+}

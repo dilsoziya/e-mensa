@@ -1,0 +1,13 @@
+.footer_main{
+    text-align: center;
+}
+#footer_Name{
+    border-left: 2px solid #f0922e;
+    border-right: 2px solid #f0922e;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+

@@ -1,0 +1,14 @@
+
+@media (min-width: 679px) {
+    .xyz_diagram h1{
+        margin-left: -12em;
+    }
+    .xyz_diagram {
+        text-align: center;
+    }
+}
+@media (max-width: 679px) {
+    .xyz_diagram{
+        text-align: center;
+    }
+}

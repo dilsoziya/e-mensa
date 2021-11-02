@@ -1,0 +1,51 @@
+<!--
+    - Praktikum DBWT. Autoren:
+    - Baris, Kacar, 3280180
+    -
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>newsletteranmeldung</title>
+</head>
+<body style="font-family: 'Viner Hand ITC'; margin: 20px">
+<div style="position: absolute; background-color: white; left: 40px; top: 8px">
+    Anmeldung
+</div>
+
+<div style="width: 400px">
+    <form id="test" action="formdata.html" method="post" style="border: 2px solid black; border-radius: 20px; padding-left: 30px; padding-top: 20px">
+
+        <label >Anrede</label> <br>
+        <input id="frau" type="checkbox" > <label for="frau">Frau</label> <br>
+        <input id="herr" type="checkbox" name="checkbox> <label for="herr">Herr</label>
+        <br>
+        <label for="vorname" >Vornamen&ast;</label> <br>
+        <input required="required" name="vorname_2" style="font-family: 'Viner Hand ITC'" id="vorname" type="text" size="30" placeholder="Bitte geben Sie Ihren Vornamen ein" >
+        <br>
+        <label  for="nachname">Nachname&ast;</label> <br>
+        <input required="required" name="nachname" style="font-family: 'Viner Hand ITC'" id="nachname" type="text" size="30" placeholder="Bitte geben Sie Ihren Nachnamen ein" >
+        <br>
+        <label for="email">E-Mail&ast;</label><br>
+        <input required="required" name="email" style="font-family: 'Viner Hand ITC'" id="email" type="email" size="30" placeholder="Bitte geben Sie Ihre E-Mail ein" >
+        <br>
+        <br>
+        <label for="dropdown">Benachrichtigungsintervall</label> <br>
+        <select id="dropdown" style="font-family: 'Viner Hand ITC'">
+            <option >Woche</option>
+            <option >Tag</option>
+            <option>Monat</option>
+        </select>
+        <br> <br>
+        <input required="required" id="datenschutz" type="checkbox"> <label for="datenschutz" >Datenschutzhinweise gelesen</label>
+        <br>
+
+        <button  style="font-family: 'Viner Hand ITC' ; background: white; border-radius: 6px; width: 100px; height: 40px; ">Anklicken</button>
+        <br>
+        <em><sup>&ast;&rpar;</sup> Eingaben sind Pflicht</em>
+
+    </form>
+</div>
+</body>
+</html>

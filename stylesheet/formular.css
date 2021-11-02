@@ -1,0 +1,89 @@
+.cont_formular{
+    background-color: #f0922e;
+    border: 2px solid #f0922e;
+    color: white;
+    text-align: center;
+}
+#img_salsa, #img_taco{
+    height: 50px;
+}
+
+.formular input {
+    border-radius: 20px;
+    width: 300px;
+    height: 2.8em;
+    text-align: center;
+}
+.formular #checkbox{
+    height: 1.2em;
+}
+#form_option{
+    padding-left: 10px;
+    -webkit-appearance: none; /*entfernt den eigenen Pfeil*/
+    width: 300px;
+    height: 2.8em;
+    border-radius: 20px;
+    font-family: "Bradley Hand ITC";
+    background-image: url("/img/select_option_pfeil.png");
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-position: 260px 0;
+}
+
+#form_option:hover{
+    width: 350px;
+    height: 3em;
+    background-position: 300px 0;
+    transition: .5s;
+
+}
+.formular #form_email:hover , #form_name:hover{
+    width: 350px;
+    height: 3em;
+    transition: .5s;
+}
+#burger_menu{
+    height: 0px;
+    justify-content: center;
+}
+
+.form_images{
+    margin-right: 1em;
+    margin-left: 1em;
+    background-color: #B91717FF;
+}
+@media (max-width: 956px) {
+    #img_doenermann{
+        margin-top: 5.3em;
+        position: absolute;
+        float: left;
+    }
+
+}
+@media (max-width: 2000px) {
+    #img_doenermann{
+        height: 250px;
+        margin-top: 12.3em;
+        margin-left: -1em;
+        position: absolute;
+        float: left;
+    }
+    #checkbox:checked ~ #burger_menu {
+        height: 500px;
+        float: right;
+        position: absolute;
+        margin-top: -300px;
+        transition:  .5s;
+    }
+
+}
+@media (max-width: 910px) {
+    #img_doenermann {
+        display: none;
+    }
+    #checkbox:checked ~ #burger_menu {
+        display: none;
+    }
+
+}
+

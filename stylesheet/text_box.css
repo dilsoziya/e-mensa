@@ -1,0 +1,7 @@
+.text_box{
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 10px;
+    border: 2px solid #f0922e;
+    border-radius: 10px;
+}
