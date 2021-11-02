@@ -176,7 +176,7 @@ const POST_PARAM_DATENSCHUTZ = 'checkbox';
 
         <footer class="footer_main">
             <a >E-Mensa GmbH</a>
-            <a  id="footer_Name">Baris Kacar</a>
+            <a  id="footer_Name">Bariss Kacar</a>
             <a >Impressum</a>
         </footer>
 
