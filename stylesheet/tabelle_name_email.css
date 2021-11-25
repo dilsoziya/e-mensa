@@ -1,0 +1,18 @@
+#tabelle_name_email{
+    display: grid;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 2em;
+    justify-content: center;
+}
+
+#tabelle_name_email button{
+    border: 2px solid #f0922e;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+#tabelle_name_email td, #tabelle_name_email th{
+    border: 2px solid #f0922e;
+}

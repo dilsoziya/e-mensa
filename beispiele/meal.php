@@ -7,6 +7,7 @@
 const GET_PARAM_MIN_STARS = 'search_min_stars';
 const GET_PARAM_SEARCH_TEXT = 'search_text';
 const GET_PARM_SHOW_DESCRIPTION = 'show_description';
+
 session_start();
 $status = "einblenden";
 
@@ -16,7 +17,7 @@ $status = "einblenden";
 
 
 $en = [
-   'name' => 'Sweet potato pockets filled with cream cheese and herbs',
+    'name' => 'Sweet potato pockets filled with cream cheese and herbs',
     'description' => 'The sweet potatoes are carefully cut open and the cream cheese is poured in.',
     'allergene' => 'allergens to the meal',
     'filter' => 'filter',
@@ -134,7 +135,7 @@ parse_str($url_comp['query'],$sprache); // nimmt nur die query
             <p> <?php
                 if(isset($_GET[GET_PARM_SHOW_DESCRIPTION])){
                     $show_description = $_GET[GET_PARM_SHOW_DESCRIPTION]; // übergibt den wert
-                        if( $_SESSION['status'] === 0){
+                        if( $show_description === 'ausblenden'){
                             $_SESSION['status'] = 1;
                         } else {
                             $_SESSION['status'] = 0;

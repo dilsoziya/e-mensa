@@ -1,10 +1,13 @@
 <?php
+include "db_config.php";
 include "dateien/gerichte.php";
 const POST_PARAM_NAME = 'form_name';
 const POST_PARAM_EMAIL = 'form_email';
 const POST_PARAM_OPTION = 'form_option';
 const POST_PARAM_DATENSCHUTZ = 'checkbox';
-
+$_SESSION['anmeldung_anzahl'] = 0;
+$_SESSION['news'] = 0;
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,10 +76,28 @@ const POST_PARAM_DATENSCHUTZ = 'checkbox';
                     <td >Gerichte </td>
                     <td >Preis intern </td>
                     <td >Preis extern</td>
-                    <td >Bilder</td>
+                    <td> Allergenen</td>
+                   <!-- <td >Bilder</td>-->
                 </tr>
                 <?php
-                    foreach ($gericht as $key => $value){
+                    $sql_gericht = "SELECT GROUP_CONCAT(code), name, id, 
+                    preis_extern, preis_intern FROM gericht JOIN gericht_hat_allergen gha 
+                        ON gericht.id = gha.gericht_id GROUP BY name ASC LIMIT 5";
+                    $result_gericht = mysqli_query($link, $sql_gericht);
+                    if(!$result_gericht){
+                        echo "Fehler wärend der Abfrage: ", mysqli_error($link);
+                    }
+                    while ($row = mysqli_fetch_assoc($result_gericht)){
+                        echo "<tr>";
+                        echo '<td>',$row['name'], '</td><td>',
+                               $row['preis_intern'], '</td> <td>'  ,
+                               $row['preis_extern'] . '</td> <td>',
+                               $row['GROUP_CONCAT(code)'] ."</td>"
+                                ;
+                        echo "</tr>";
+                    }
+
+                    /*foreach ($gericht as $key => $value){
                         echo
                          "<tr>" .
                          "<td >".$value['gericht']. "</td>".
@@ -84,17 +105,47 @@ const POST_PARAM_DATENSCHUTZ = 'checkbox';
                          "<td >".$value['preis_extern']. "</td>" .
                          "<td> <img class='td_img_center' height='50px' src=" . $value['img'] . "> </td>".
                          "</tr>";
-                    }
+                    }*/
                 ?>
                 </tbody>
             </table>
         </div>
+        <div style="display: grid;justify-content: center">
+            <h1 >Allergene</h1>
+            <?php
+            $sql_allergen = "SELECT code,name FROM allergen";
+            $result_allergen = mysqli_query($link, $sql_allergen);
+            if(!$result_allergen){
+                echo "Fehler während der Abfrage: ", mysqli_error($link);
+            }
+            while($row = mysqli_fetch_assoc($result_allergen)){
+                echo
+                    "<li>". $row['code'] . " = ". $row['name'] . "</li>";
+
+            }?>
+        </div>
         <!--X-Y-Z Diagramm-->
             <div class="xyz_diagram" id="link_diagram">
-                <h1>E-Mensa in Zahlen</h1>
-                <a>Besuche</a>
-                <a>Y Anmeldungen zum Newsletter</a>
-                <a>Z Speisen</a>
+                <h1> E-Mensa in Zahlen</h1>
+                <a><?php
+                    if(isset($_SESSION['zaehler'])) {
+                        echo $_SESSION['zaehler'] += 1;
+                    }else{
+                        echo $_SESSION['zaehler'] = 1;
+                    }
+                    ?> Besuche</a>
+                <a><?php
+                    $t=0;
+                    if(isset($_SESSION['anmeldung_anzahl'])){
+                        $t = $_SESSION['anmeldung_anzahl'];
+                        echo ++$t;
+                    }
+                    else if ($t === 0){
+                       echo $t ;
+                    }
+                ?>
+                </a>Anmeldungen zum Newsletter</a>
+                <a><?php echo count($gericht)?> Speisen</a>
             </div>
 
         <img alt="Bitte die Seite neu Laden. Es ist ein Fehler aufgetreten." id="img_doenermann" src="img/doenermann.png" >
@@ -104,7 +155,7 @@ const POST_PARAM_DATENSCHUTZ = 'checkbox';
                 <h1>Interesse geweckt? Wir informieren Sie!</h1>
                 <img alt="Bitte die Seite neu Laden. Es ist ein Fehler aufgetreten." id="img_salsa" src="img/salsa.png" >
                 <img alt="Bitte die Seite neu Laden. Es ist ein Fehler aufgetreten." id="img_taco" src="img/taco.png" >
-                <form method="post" >
+                <form method="post">
                     <label for="form_name">Ihr Name</label> <br>
                     <input name="form_name" id="form_name" placeholder="Vorname" required>
                     <br>
@@ -123,6 +174,7 @@ const POST_PARAM_DATENSCHUTZ = 'checkbox';
 
                     <br><br><button >Zum Newsletter anmelden</button><br>
                     <img alt="Bitte die Seite neu Laden. Es ist ein Fehler aufgetreten." id="burger_menu" src="img/burger_menu.png">
+                    <div style="">
                     <?php
                     if(isset($_POST[POST_PARAM_NAME]) && isset($_POST[POST_PARAM_EMAIL]) && isset($_POST[POST_PARAM_DATENSCHUTZ]) && isset($_POST[POST_PARAM_OPTION])){
                         $name = $_POST[POST_PARAM_NAME];
@@ -133,30 +185,49 @@ const POST_PARAM_DATENSCHUTZ = 'checkbox';
                         if(strpos($email, "rcpt.at") ||strpos($email, "damnthespam.at") ||strpos($email, "wegwerfmail.de") || strpos($email, "@trashmail.de") || strpos($email, "trashmail.com") ){
                             echo "<style> #form_email{ border: 3px solid red } </style>";
                         }else{
+                            /*
                             $inhalt =
                                 "$".$name. " = [
                                      1 => ['name' => '" .$name . "'],
-                                     2 => ['email' => '" .$email. "'],
+                                     2 => ['email' => '" .$email. "'],s
                                      3 => ['datenschutz' => '" .$datenschutz . "'],
                                      4 => ['option' =>'" . $option. "']
                                 ];\n";
-                            $handle = fopen ("nutzerdaten.php", "a");
+                            $handle = fopen ("nutzerdaten.php", "a");*/
+                            ++$_SESSION['news'];
+
+                            $inhalt =
+                                '$newsletter'. "[". $_SESSION['news'] ."]"."['name']" . ' = "' . "$name" .'";'. "\n".
+                                '$newsletter'. "[". $_SESSION['news'] ."]"."['email']" . ' = "' . "$email" .'";'."\n".
+                                '$newsletter'. "[". $_SESSION['news'] ."]"."['datenschutz']" . ' = "' . "$datenschutz" .'";'."\n".
+                                '$newsletter'. "[". $_SESSION['news'] ."]"."['option']" . ' = "' . "$option" .'"; '. "\n"
+                                ."\n";
+                            $handle = fopen ("werbeseite/nl-data.php", "a");
                             if(!$handle){
                                 echo "<div style='background-color: red'>Fehlgeschlagen</div>";
                             }else{
-
+                                /*Anmeldung zum Newsletter Aufgabe 1 M3*/
+                                if(isset($_SESSION['anmeldung_anzahl'])){
+                                 echo ++$_SESSION['anmeldung_anzahl'] ;
+                                }else{
+                                    echo $_SESSION['anmeldung_anzahl'] = 0;
+                                }
                                 echo "<div style='background-color: green;'>Die Newsletter Anmeldung war Erfolgreich</div>";
                                 fwrite ($handle, $inhalt);
                                 fclose ($handle);
                             }
                         }
+
                     }
                     ?>
+                    </div> 
                     <br><br>
                 </form>
-
             </div>
         </div>
+        <h1 style="text-align: center">Haben Sie ein Wunschgericht? Dann klicken Sie <a href="werbeseite/wunschgericht.php">hier</a></h1>
+      <br>
+
         <!-- Das ist uns wichtig-->
         <div class="text_wichtiges" id="link_text">
             <h1 >Das ist uns wichtig</h1>
@@ -168,9 +239,11 @@ const POST_PARAM_DATENSCHUTZ = 'checkbox';
                 </ul>
             </div>
         </div>
-            <div>
-                <h1 style="text-align: center" >Wir freuen uns auf Ihren Besuch!</h1>
+            <div style="text-align: center">
+                <h1  >Wir freuen uns auf Ihren Besuch!</h1><br>
+
             </div>
+
 
         <div id="linie_footer"><hr  ></div>
 
